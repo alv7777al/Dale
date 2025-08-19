@@ -1,0 +1,70 @@
+
+<ion-content [fullscreen]="true">
+
+  <!-- Botón de cerrar modal -->
+  <div class="form-header" (click)="cerrarModal()">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <ion-label>Editar Articulo</ion-label>
+  </div>
+
+
+  <form (ngSubmit)="guardarCambios()" class="form-container">
+
+    <!-- Categoría -->
+    <div class="form-group">
+      <ion-label class="label">Selecciona una Categoría</ion-label>
+      <ion-select [(ngModel)]="articulo.categoria" name="categoria" interface="popover">
+        <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.nombre">
+          {{ categoria.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <!-- Descripción -->
+    <div class="form-group">
+      <ion-label class="label">Descripción</ion-label>
+      <ion-textarea maxlength="6000" [(ngModel)]="articulo.descripcion" name="descripcion" placeholder="Escribe una descripción..."></ion-textarea>
+      <div class="char-count">{{ articulo.descripcion.length || 0 }}/6000</div>
+    </div>
+
+    <!-- Precio -->
+    <div class="form-group">
+      <ion-label class="label">Precio (Bs.)</ion-label>
+      <ion-input type="number" [(ngModel)]="articulo.precio" name="precio" placeholder="0.00"></ion-input>
+    </div>
+
+    <!-- Ciudades -->
+    <div class="form-group">
+      <ion-label class="label">Ciudades a Publicar</ion-label>
+      <ion-select [(ngModel)]="articulo.ciudades" name="ciudades" multiple="true" interface="popover" placeholder="Selecciona ciudad(es)">
+        <ion-select-option *ngFor="let ciudad of todasCiudades" [value]="ciudad">
+          {{ ciudad.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <!-- Imágenes -->
+    <div class="form-group">
+      <ion-label class="label highlight">Imágenes del producto</ion-label>
+      <div class="imagenes-container">
+        <!-- Imagenes cargadas -->
+        <div *ngFor="let img of articulo.imagenesProducto; let i = index" class="imagen-preview">
+          <img [src]="img" />
+          <ion-icon name="close-circle" (click)="eliminarImagen(i)"></ion-icon>
+        </div>
+
+        <!-- Botón agregar -->
+        <div class="imagen-add" (click)="agregarImagen()">
+          <ion-icon name="camera-outline"></ion-icon>
+          <span>Agregar</span>
+        </div>
+      </div>
+      <div class="char-count">{{ articulo.imagenesProducto.length }}/5 imágenes</div>
+    </div>
+
+    <!-- Botón Guardar -->
+    <ion-button expand="block" color="primary" type="submit" class="btn-submit">
+      Guardar Cambios
+    </ion-button>
+  </form>
+</ion-content>

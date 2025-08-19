@@ -1,0 +1,143 @@
+.image-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  .image-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+.seller-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+
+  .seller-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .seller-name {
+    margin: 0;
+    font-weight: bold;
+    //color: var(--ion-color-primary);
+  }
+
+  .seller-time {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+    color: var(--ion-color-medium);
+  }
+}
+
+.product-details {
+  padding: 0 16px;
+
+  .product-city {
+    font-size: 0.95rem;
+    color: var(--ion-color-medium);
+    margin-bottom: 6px;
+  }
+
+  .product-description {
+    margin-bottom: 8px;
+    color: var(--ion-color-dark);
+    font-size: 1rem;
+  }
+
+  .product-price {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+}
+
+.contact-button-container {
+  padding: 16px;
+}
+
+.contact-button {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --border-radius: 8px;
+}
+
+/* Botón atrás */
+.back-button {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  --color: white;
+  --background: rgba(0, 0, 0, 0.4);
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.back-button ion-icon {
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+// Indicadores de imágenes
+.image-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  gap: 8px;
+
+  span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--color-muted);
+    border-radius: 50%;
+    transition: background 0.2s, transform 0.2s;
+    opacity: 0.6;
+  }
+  span.active {
+    background: var(--color-primary);
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px var(--color-primary), 0 2px 8px rgba(var(--color-primary-rgb), 0.15);
+  }
+}
+// fin indicadores de imágenes
+
+
+
+
+// centrar descripcion
+.centar-descripcion {
+  text-align: center; /* Centra el texto dentro del <p> */
+  color: var(--ion-color-primary);
+}

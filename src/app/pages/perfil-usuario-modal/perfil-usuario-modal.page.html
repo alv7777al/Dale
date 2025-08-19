@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true" class="perfil-modal-content">
+
+  <!-- Botón de cerrar modal -->
+  <ion-button fill="clear" class="back-button" (click)="cerrarModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-button>
+
+  <!-- Avatar del usuario -->
+  <div class="avatar-container">
+    <img [src]="usuario.fotoPerfil" alt="Avatar" class="avatar-image">
+  </div>
+
+  <!-- Información editable del usuario -->
+  <ion-list lines="none" class="user-info-list">
+
+    <ion-item>
+      <ion-icon slot="start" name="person-outline" color="primary"></ion-icon>
+      <ion-input
+        [(ngModel)]="usuario.nombre"
+        placeholder="Nombre"
+        (ionFocus)="activarEdicion()">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="person-outline" color="primary"></ion-icon>
+      <ion-input
+        [(ngModel)]="usuario.apellido"
+        placeholder="Apellido"
+        (ionFocus)="activarEdicion()">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="location-outline" color="primary"></ion-icon>
+      <ion-input
+        [(ngModel)]="usuario.ciudad"
+        placeholder="Ciudad"
+        (ionFocus)="activarEdicion()">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="call-outline" color="primary"></ion-icon>
+      <ion-input
+        [(ngModel)]="usuario.celular"
+        placeholder="Celular"
+        (ionFocus)="activarEdicion()">
+      </ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- Botón Guardar Cambios solo aparece si editando=true -->
+  <div class="logout-button-container" *ngIf="editando">
+    <ion-button class="save-button" (click)="guardarCambios()">
+      Guardar Cambios
+    </ion-button>
+  </div>
+
+  <!-- Botón de cerrar sesión siempre visible -->
+  <div class="logout-button-container">
+    <ion-button class="logout-button" (click)="cerrarSesion()">
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+</ion-content>

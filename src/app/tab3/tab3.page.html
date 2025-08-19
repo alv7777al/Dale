@@ -1,17 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+<div class="form-header">
+  <!--<ion-icon name="storefront-outline"></ion-icon>-->
+  <ion-label>Mis Publicaciones</ion-label>
+</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div *ngIf="showInfoBar" class="info-bar">
+  <ion-icon name="albums-outline"></ion-icon>
+  <small>
+    Aquí puedes ver y gestionar tus articulos publicados. Edita, actualiza su estado o revisa sus detalles fácilmente.
+  </small>
+  <span class="close-info-bar" (click)="showInfoBar = false">
+    <ion-icon name="close-outline"></ion-icon>
+  </span>
+</div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div *ngIf="productos.length === 0" class="no-products">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>No tienes productos publicados.</p>
+  </div>
+
+  <ion-list lines="none">
+    <ion-card *ngFor="let producto of productos" class="product-card">
+      <img [src]="producto.imagenesProducto[0]" alt="Producto" class="product-image-preview" />
+      <ion-card-content>
+        <p class="product-title">{{ producto.descripcion }}</p>
+        <p class="product-price">Bs. {{ producto.precio | number }}</p>
+        <span class="status" [ngClass]="producto.vendido ? 'sold' : 'available'">
+          {{ producto.vendido ? 'Vendido' : 'Disponible' }}
+        </span>
+        <div class="product-actions">
+          <ion-button fill="solid" color="primary" expand="block"
+            (click)="editarArticulo(producto)"
+            [disabled]="producto.vendido">
+            Editar
+          </ion-button>
+          <ion-button fill="outline" color="medium" expand="block"
+            (click)="cambiarEstado(producto)">
+            {{ producto.vendido ? 'Marcar como Disponible' : 'Marcar como Vendido' }}
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
 </ion-content>

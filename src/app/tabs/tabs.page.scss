@@ -1,1 +1,51 @@
+.custom-tab-bar {
+  --background: var(--color-card);
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.07);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  height: 50px; /* menos altura */
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
 
+.custom-tab-bar ion-tab-button {
+  --color: var(--color-muted);
+  --color-selected: var(--color-primary);
+  font-weight: 600;
+  border-radius: 10px;
+  margin: 0 6px;
+  padding: 4px 8px; /* menos padding para hacerlo más compacto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centra verticalmente */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*
+.custom-tab-bar ion-tab-button:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+}
+
+
+.custom-tab-bar ion-tab-button.tab-selected {
+  background-color: transparent !important; /* No pinta el fondo 
+  color: var(--color-primary); /* Solo cambia el color del icono/texto 
+  box-shadow: none;
+}
+*/
+
+.custom-tab-bar ion-tab-button ion-icon {
+  font-size: 20px; /* icono más pequeño */
+  margin-bottom: 2px;
+  transition: transform 0.3s ease;
+}
+
+.custom-tab-bar ion-tab-button.tab-selected ion-icon {
+  transform: scale(1.1);
+}
+
+.custom-tab-bar ion-tab-button ion-label {
+  font-size: 11px; /* texto más pequeño */
+  line-height: 12px;
+}

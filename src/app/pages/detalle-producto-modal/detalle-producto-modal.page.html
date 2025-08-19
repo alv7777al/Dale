@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true" *ngIf="producto">
+
+  <!-- Botón atrás -->
+  <ion-button fill="clear" class="back-button" (click)="cerrarModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-button>
+
+  <!-- Galería de imágenes -->
+  <div class="image-gallery" #gallery (scroll)="onGalleryScroll($event)">
+    <div class="image-slide" *ngFor="let img of productImages">
+      <img [src]="img" alt="Imagen del producto">
+    </div>
+  </div>
+
+  <!-- Indicadores de imágenes -->
+<div class="image-indicators">
+  <span 
+    *ngFor="let img of productImages; let i = index" 
+    [class.active]="i === activeImageIndex"
+  ></span>
+</div>
+
+
+  <!-- Información del vendedor -->
+  <div class="seller-info">
+    <img class="seller-image" [src]="producto.usuario.fotoPerfil" alt="Vendedor">
+    <div>
+      <ion-label>{{ producto.usuario.nombre }} {{ producto.usuario.apellido }}</ion-label>
+      <p class="seller-time">{{ producto.fechaPublicacion | tiempoPublicacion }}</p>
+    </div>
+  </div>
+
+  
+
+  <!-- Información del producto -->
+  <div class="product-details">
+    <p class="product-city"><strong>Ciudad :</strong> {{ producto.usuario.ciudad }}</p>
+    <p class="centar-descripcion">Descripcion</p>
+    <p class="product-description">{{ producto.descripcion }}</p>
+    <h3 class="product-price">Bs. {{ producto.precio | number }}</h3>
+  </div>
+
+  <!-- Botón de contacto -->
+  <div class="contact-button-container">
+    <ion-button expand="block" class="contact-button" (click)="contactSeller()">
+      Contactar al Vendedor
+    </ion-button>
+  </div>
+
+</ion-content>

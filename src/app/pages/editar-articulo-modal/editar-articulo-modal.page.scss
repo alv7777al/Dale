@@ -1,0 +1,122 @@
+// titulo del formulario
+.form-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ion-color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 18px 0 12px 16px;
+  background: var(--color-background); // Respeta el background general
+  box-shadow: none; // Elimina el aspecto de borde/sombra inferior
+  ion-icon {
+    font-size: 1.5rem;
+    color: var(--ion-color-primary);
+  }
+}
+
+
+.back-button ion-icon {
+  font-size: 24px;
+}
+
+.form-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.highlight {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  font-size: 15px;
+}
+
+ion-input, ion-textarea, ion-select {
+  border-bottom: 1px solid #ddd;
+  --padding-start: 0;
+  font-size: 14px;
+}
+
+ion-textarea {
+  min-height: 200px;
+}
+
+.char-count {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.imagenes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.imagen-preview {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.imagen-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagen-preview ion-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 20px;
+  color: var(--ion-color-danger);
+  background: white;
+  border-radius: 50%;
+}
+
+.imagen-add {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  border: 2px dashed #cfd8dc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--ion-color-primary);
+  cursor: pointer;
+}
+
+.imagen-add ion-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.btn-submit {
+  margin-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
