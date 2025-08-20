@@ -35,3 +35,13 @@
 ion-button {
   text-transform: none !important;
 }
+
+
+// Asegura que la status bar no sea translúcida
+ion-header, ion-toolbar {
+  padding-top: var(--ion-safe-area-top);
+}
+
+ion-content {
+  padding-bottom: var(--ion-safe-area-bottom);
+}

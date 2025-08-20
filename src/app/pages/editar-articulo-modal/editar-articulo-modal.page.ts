@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Categoria } from 'src/app/_model/categoria';
 import { Ciudad } from 'src/app/_model/ciudad';
 import { categorias } from 'src/app/_model/mock-data';
 import { Articulo } from 'src/app/_model/producto';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-editar-articulo-modal',
@@ -26,7 +27,9 @@ export class EditarArticuloModalPage {
     { nombre: 'Sucre' },
   ];
 
-  constructor(private modalCtrl: ModalController) {}
+  //imagenes: string[] = [];
+
+  constructor(private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) {}
 
   cerrarModal() {
     this.modalCtrl.dismiss();
@@ -40,9 +43,50 @@ export class EditarArticuloModalPage {
     this.articulo.imagenesProducto.splice(index, 1);
   }
 
-  agregarImagen() {
-    // Por ahora simulamos con una imagen de ejemplo
-    this.articulo.imagenesProducto.push('https://via.placeholder.com/150');
+   async agregarImagen() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Agregar imagen',
+      buttons: [
+        {
+          text: 'Tomar foto',
+          icon: 'camera-outline',
+          handler: () => this.tomarFoto()
+        },
+        {
+          text: 'Elegir de galería',
+          icon: 'image-outline',
+          handler: () => this.elegirGaleria()
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          icon: 'close-outline'
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  async tomarFoto() {
+    const image = await Camera.getPhoto({
+      quality: 80,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+    if (image?.dataUrl) {
+      this.articulo.imagenesProducto.push(image.dataUrl);
+    }
+  }
+
+  async elegirGaleria() {
+    const image = await Camera.getPhoto({
+      quality: 80,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Photos
+    });
+    if (image?.dataUrl) {
+      this.articulo.imagenesProducto.push(image.dataUrl);
+    }
   }
 
 }

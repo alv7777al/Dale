@@ -45,7 +45,7 @@
 
     <!-- Imágenes -->
     <div class="form-group">
-      <ion-label class="label highlight">Imágenes del producto</ion-label>
+      <h3 class="">Imágenes del producto</h3>
       <div class="imagenes-container">
         <!-- Imagenes cargadas -->
         <div *ngFor="let img of articulo.imagenesProducto; let i = index" class="imagen-preview">
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Botón agregar -->
-        <div class="imagen-add" (click)="agregarImagen()">
+        <div class="imagen-add" *ngIf="articulo.imagenesProducto.length < 5" (click)="agregarImagen()">
           <ion-icon name="camera-outline"></ion-icon>
           <span>Agregar</span>
         </div>
@@ -62,9 +62,20 @@
       <div class="char-count">{{ articulo.imagenesProducto.length }}/5 imágenes</div>
     </div>
 
+
+
+
+
+    
+
+
+
     <!-- Botón Guardar -->
-    <ion-button expand="block" color="primary" type="submit" class="btn-submit">
-      Guardar Cambios
-    </ion-button>
+     <div class="btn-submit">
+      <ion-button expand="block" type="submit">
+        Guardar Cambios
+      </ion-button>
+     </div>
+
   </form>
 </ion-content>
