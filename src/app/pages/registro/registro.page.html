@@ -1,0 +1,65 @@
+<!-- registro.page.html -->
+<ion-content class="ion-padding registro-container">
+  <br><br><br>
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="assets/images/login2.png" alt="Logo App" class="logo" />
+  </div>
+
+  <h2 class="titulo">Crear cuenta</h2>
+  <p class="subtitulo">Completa los datos para registrarte</p>
+
+  <!-- Formulario -->
+  <form (ngSubmit)="registrar()">
+
+    <ion-item class="input-item">
+      <ion-input type="text" placeholder="Nombre" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input type="text" placeholder="Apellidos" [(ngModel)]="usuario.apellidos" name="apellidos" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input type="number" placeholder="Celular" [(ngModel)]="usuario.celular" name="celular" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-select placeholder="Selecciona tu ciudad" [(ngModel)]="usuario.ciudad" name="ciudad" interface="popover">
+        <ion-select-option value="La Paz">La Paz</ion-select-option>
+        <ion-select-option value="Cochabamba">Cochabamba</ion-select-option>
+        <ion-select-option value="Santa Cruz">Santa Cruz</ion-select-option>
+        <ion-select-option value="Oruro">Oruro</ion-select-option>
+        <ion-select-option value="Potosí">Potosí</ion-select-option>
+        <ion-select-option value="Tarija">Tarija</ion-select-option>
+        <ion-select-option value="Chuquisaca">Chuquisaca</ion-select-option>
+        <ion-select-option value="Beni">Beni</ion-select-option>
+        <ion-select-option value="Pando">Pando</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Subir/Tomar foto -->
+    <div class="foto-container">
+      <div class="preview-foto" *ngIf="usuario.fotoPerfil">
+        <img [src]="usuario.fotoPerfil" alt="Foto Perfil" />
+      </div>
+      <div class="botones-foto">
+        <ion-button expand="block" fill="outline" color="primary" (click)="tomarFoto()">
+          Tomar foto
+        </ion-button>
+        <ion-button expand="block" fill="outline" color="secondary" (click)="subirFoto()">
+          Subir de galería
+        </ion-button>
+      </div>
+    </div>
+
+    <ion-button expand="block" type="submit" class="btn-registrar">
+      Registrarse
+    </ion-button>
+  </form>
+
+  <div class="enlace-login">
+    ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+  </div>
+
+</ion-content>

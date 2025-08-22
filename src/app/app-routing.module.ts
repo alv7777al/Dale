@@ -17,6 +17,14 @@ const routes: Routes = [
   {
     path: 'editar-articulo-modal',
     loadChildren: () => import('./pages/editar-articulo-modal/editar-articulo-modal.module').then( m => m.EditarArticuloModalPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   }
 ];
 @NgModule({
