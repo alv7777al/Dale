@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Usuario } from 'src/app/_model/usuario';
 
 @Component({
@@ -14,7 +14,7 @@ export class PerfilUsuarioModalPage  {
   camposUsuario: any[] = [];
   editando: boolean = false; // bandera para mostrar botón Guardar Cambios
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private navCtrl: NavController) { }
 
   cerrarModal() {
     this.modalCtrl.dismiss();
@@ -24,6 +24,7 @@ export class PerfilUsuarioModalPage  {
     // Aquí puedes agregar la lógica de logout
     console.log('Cerrar sesión');
     this.modalCtrl.dismiss({ logout: true });
+    this.navCtrl.navigateForward('/login');
   }
 
   activarEdicion() {
