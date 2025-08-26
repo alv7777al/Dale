@@ -45,3 +45,31 @@ ion-header, ion-toolbar {
 ion-content {
   padding-bottom: var(--ion-safe-area-bottom);
 }
+
+
+// Personalización para Ionic
+.swal2-popup {
+  font-size: 1.6rem !important;
+  border-radius: 8px !important;
+  
+  .swal2-title {
+    font-size: 2rem !important;
+    color: var(--ion-color-dark) !important;
+  }
+  
+  .swal2-confirm {
+    background-color: var(--ion-color-primary) !important;
+    font-size: 1.4rem !important;
+    border-radius: 4px !important;
+  }
+  
+  .swal2-cancel {
+    background-color: var(--ion-color-medium) !important;
+    font-size: 1.4rem !important;
+    border-radius: 4px !important;
+  }
+}
+
+.swal2-container {
+  z-index: 10000 !important;
+}

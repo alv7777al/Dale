@@ -17,6 +17,11 @@ const routes: Routes = [
   {
     path: 'editar-articulo-modal',
     loadChildren: () => import('./pages/editar-articulo-modal/editar-articulo-modal.module').then( m => m.EditarArticuloModalPageModule)
+  },
+  //eliminar luego
+  {
+    path: 'alerts',
+    loadChildren: () => import('./pages/alerts/alerts.module').then( m => m.AlertsPageModule)
   }
 ];
 @NgModule({

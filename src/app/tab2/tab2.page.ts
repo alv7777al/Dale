@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, Platform } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-tab2',
@@ -33,9 +34,39 @@ export class Tab2Page {
 
   imagenes: string[] = [];
 
-  constructor(private actionSheetCtrl: ActionSheetController, private platform: Platform) {}
+  constructor(private actionSheetCtrl: ActionSheetController, private platform: Platform, private alertService: AlertService) {}
 
   ngOnInit() {}
+
+  showSuccess(){
+    this.alertService.success('Éxito', 'El producto ha sido publicado exitosamente.');
+  }
+
+    showConfirm() {
+    this.alertService.confirm(
+      'Confirmar acción',
+      '¿Estás seguro de que quieres realizar esta acción?'
+    ).then((result) => {
+      if (result.isConfirmed) {
+        this.alertService.success('Confirmado', 'Acción realizada');
+      }
+    });
+  }
+
+    showError() {
+    this.alertService.error('Error', 'Algo salió mal');
+  }
+
+  showCustom() {
+    this.alertService.custom({
+      title: 'Personalizado',
+      html: '<p>Este es un alerta personalizado</p>',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    });
+  }
 
   async seleccionarImagen() {
     const actionSheet = await this.actionSheetCtrl.create({

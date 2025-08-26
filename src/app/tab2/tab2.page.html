@@ -92,7 +92,7 @@
 
     <!-- Botón publicar -->
     <div class="btn-publicar-container">
-      <ion-button expand="block" type="submit" [disabled]="publicarForm.invalid">
+      <ion-button expand="block" type="submit" [disabled]="publicarForm.invalid" (click)="showSuccess()">
         Publicar Articulo
       </ion-button>
     </div>
